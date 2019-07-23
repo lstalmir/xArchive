@@ -1,0 +1,13 @@
+
+# Binary directories
+[Bb]in/
+[Bb]uild/
+[Ii]ntermediate/
+
+# Qt binary directories
+[Bb]uild-*/
+
+# Visual studio cache files
+.vs
+*.user
+[Pp]ackages/

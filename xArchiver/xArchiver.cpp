@@ -66,13 +66,13 @@ int main( int argc, char** argv )
         return -1;
     }
 
-    // Usage: VAHArchiver-Standalone <archive>(1) <directory>(2)
+    // Usage: xarchiver <archive>(1) <directory>(2)
     const char* outputFilename = argv[1];
     const char* inputDirectory = argv[2];
 
-    auto archive = Archive::Create( outputFilename );
+    std::unique_ptr<Archive> archive( Archive::Create( outputFilename ) );
 
-    export_directory( archive, inputDirectory );
+    export_directory( *archive, inputDirectory );
 
     return 0;
 }

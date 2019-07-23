@@ -16,11 +16,11 @@ namespace xArchive
     class Archive
     {
     public:
-        static Archive Open(
+        static Archive* Open(
             const std::string& filename,
             ArchiveOpenFlags flags = ArchiveOpenFlags() );
 
-        static Archive Create(
+        static Archive* Create(
             const std::string& filename,
             uint32_t allocationSize = 4096 );
 
