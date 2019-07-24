@@ -254,6 +254,24 @@ namespace xArchive
         return m_CurrentDirectoryPath;
     }
 
+    std::vector<std::string> Archive::ListDirectory( const std::string& path )
+    {
+        _CheckRead();
+
+        std::vector<std::string> entries;
+
+        auto currentDirectory = _GetDirectory( path );
+        while( currentDirectory )
+        {
+            for( uint32_t i = 0; i < currentDirectory->NumEntries; ++i )
+                entries.push_back( currentDirectory->Entries[i].Name );
+
+            currentDirectory = _ReadDirectory( currentDirectory->Next );
+        }
+
+        return entries;
+    }
+
     void Archive::CreateFile( const std::string& path, const void* data, size_t size )
     {
         _CheckWrite();
@@ -416,7 +434,7 @@ namespace xArchive
         if( StringStartsWith( path, "/" ) )
         {
             currentDirectoryOffset = OffsetOf( ArchiveHeader, Root );
-            currentDirectory.reset( &m_pHeader->Root );
+            currentDirectory.reset( &m_pHeader->Root, m_pDirectoryFree );
             path_ = path.substr( 1, std::string::npos );
         }
 
@@ -474,6 +492,9 @@ namespace xArchive
 
     Archive::SharedArchiveDirectory Archive::_ReadDirectory( uint32_t offset )
     {
+        if( offset == 0 )
+            return nullptr;
+        
         std::vector<uint32_t> buffer;
         buffer.resize( sizeof( ArchiveDirectory ) / SizeOfElement( buffer ) );
 

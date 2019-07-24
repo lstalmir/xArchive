@@ -8,6 +8,9 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+VERSION = 0.1
+DEFINES += XARCHIVEMANAGER_VERSION=$$VERSION
+
 TARGET = xArchiveManager
 TEMPLATE = app
 

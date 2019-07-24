@@ -3,6 +3,7 @@
 #include "NewArchiveDialog.h"
 #include "AboutDialog.h"
 #include <QFileDialog>
+#include <QStandardItemModel>
 
 ArchiveManagerWindow::ArchiveManagerWindow( QWidget* parent )
     : QMainWindow( parent )
@@ -32,6 +33,14 @@ void ArchiveManagerWindow::openArchive()
 
         this->statusBar()->showMessage( "Opened " + filename, 3000 );
         this->setWindowTitle( m_WindowTitleBase + " - " + filename );
+
+        QStringList files = m_Manager.getDirectoryContents( "/" );
+
+        QStandardItemModel* model = new QStandardItemModel;
+        for( auto file : files )
+            model->appendRow( new QStandardItem( file ) );
+
+        m_pUI->treeView->setModel( model );
     }
 }
 

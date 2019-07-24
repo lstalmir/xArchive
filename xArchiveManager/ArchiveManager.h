@@ -13,6 +13,8 @@ public:
     void createNewArchive( QString filename );
     void openArchive( QString filename );
 
+    QStringList getDirectoryContents( QString directory );
+
 signals:
 
 public slots:

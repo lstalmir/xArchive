@@ -28,6 +28,7 @@ namespace xArchive
         virtual void RemoveDirectory( const std::string& path );
         virtual void SetCurrentDirectory( const std::string& path );
         virtual std::string GetCurrentDirectory() const;
+        virtual std::vector<std::string> ListDirectory( const std::string& path );
         virtual void ReadFile( const std::string& path, void* buffer, size_t bufferSize );
         virtual std::vector<char> ReadFile( const std::string& path );
         virtual void CreateFile( const std::string& path, const void* data, size_t size );
