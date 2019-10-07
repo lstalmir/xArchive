@@ -1,4 +1,5 @@
 #pragma once
+#include "xArchiveConf.h"
 #include "xArchiveFile.h"
 #include "xArchiveAllocator.h"
 #include "xArchiveHelpers.h"
@@ -16,11 +17,11 @@ namespace xArchive
     class Archive
     {
     public:
-        static Archive* Open(
+        static XARCHIVE_API Archive* Open(
             const std::string& filename,
             ArchiveOpenFlags flags = ArchiveOpenFlags() );
 
-        static Archive* Create(
+        static XARCHIVE_API Archive* Create(
             const std::string& filename,
             uint32_t allocationSize = 4096 );
 

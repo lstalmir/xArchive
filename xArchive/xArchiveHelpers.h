@@ -4,6 +4,9 @@
 #include <string>
 #include <cctype>
 
+#undef min
+#undef max
+
 #define ElementOf( Struct, Element ) (((Struct*)0)->Element)
 #define OffsetOf( Struct, Element )  (offsetof( Struct, Element ))
 

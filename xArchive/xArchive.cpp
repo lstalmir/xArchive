@@ -7,7 +7,7 @@
 
 namespace xArchive
 {
-    Archive* Archive::Open( const std::string& filename, ArchiveOpenFlags flags )
+    XARCHIVE_API Archive* Archive::Open( const std::string& filename, ArchiveOpenFlags flags )
     {
         ArchiveFileOpenMode mode = ArchiveFileOpenMode::eReadOnly;
 
@@ -17,7 +17,7 @@ namespace xArchive
         return new Archive( filename, mode );
     }
 
-    Archive* Archive::Create( const std::string& filename, uint32_t allocationSize )
+    XARCHIVE_API Archive* Archive::Create( const std::string& filename, uint32_t allocationSize )
     {
         UniqueArchiveFile file = std::make_unique<CompressedArchiveFile>( filename, ArchiveFileOpenMode::eWriteOnly );
         UniqueArchiveHeader header = std::make_unique<ArchiveHeader>();

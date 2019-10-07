@@ -30,6 +30,9 @@
     <ClInclude Include="xArchiveHelpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="xArchiveConf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="xArchive.cpp">
